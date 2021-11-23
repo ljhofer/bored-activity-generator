@@ -26,10 +26,10 @@ const userSchema = new Schema({
     minlength: 5,
   },
   followers: [
-    userId: String,
+  
   ],
   following: [
-    userId: String,
+   
   ],
   activities: [
     {
