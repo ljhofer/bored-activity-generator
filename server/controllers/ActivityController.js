@@ -1,41 +1,30 @@
-const { User } = require('../models');
+const { Activity } = require('../models');
 
 module.exports = {
 
-    // createUser
+    // createActivity
+    
+
+    // getTopActivities
 
 
 
-    // updateUsername
+    // getActivitybyID
+        // ? add conditional for if you have already interacted
 
 
-
-    // updateName 
-
-
-
-    // updateEmail
-
-
-
-    // getUser
-
-
- 
-    // addFollowing
-        // add to other person's followers
-
-
-    // deleteFollowing
-
-
-
-    // getAllFollowing
 
     
 
-    // getAllFollowing
 
 
+
+
+
+
+
+
+
+   
 
 }
