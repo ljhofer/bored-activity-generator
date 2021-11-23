@@ -13,18 +13,4 @@ module.exports = {
         // ? add conditional for if you have already interacted
 
 
-
-    
-
-
-
-
-
-
-
-
-
-
-   
-
-}
+};
