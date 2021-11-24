@@ -1,10 +1,10 @@
 
 const router = require('express').Router();
 
-const { getTopActivities, createActivity, getActivityByID  } = require('../../controllers/ActivityController');
+const { getTopActivities, createActivity, getActivityById  } = require('../../controllers/ActivityController');
 
 
-router.route('/').get(getTopActivities);
+// router.route('/').get(getTopActivities);
 router.route('/').post(createActivity);
 router.route('/:id').get(getActivityById);
 
