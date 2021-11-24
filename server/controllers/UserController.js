@@ -2,7 +2,12 @@ const { User } = require('../models');
 
 module.exports = {
 
-    // signup
+   // getUser
+   
+   
+   
+   
+    // createUser
     async createUser({ body }, res ) {
         const user = await User.create(body);
 
@@ -13,40 +18,28 @@ module.exports = {
         res.status(200).json(user);
     }
 
+    // getUserById
+
+
+    // updateUser
+        // updateUsername
+        // updateName 
+        // updateEmail
+        // addFollowing
+
+
     // login
 
-
+    
     // log out
 
 
-    // updateUsername
-
-
-
-    // updateName 
-
-
-
-    // updateEmail
-
-
-
-    // getUser
-
-
- 
-    // addFollowing
+    // Wishlist
         // add to other person's followers
+        // deleteFollowing
 
 
-    // deleteFollowing
-
-
-
-    // getAllFollowing
-
-
-
-    // getAllFollowers
+    
+         
 
 };
