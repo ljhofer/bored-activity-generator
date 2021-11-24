@@ -5,9 +5,9 @@ const { getUsers, createUser, getUserById, updateUser, login, logout } = require
 router.route('/').get(getUsers);
 router.route('/').post(createUser);
 router.route('/:id').get(getUserById);
-router.router('/:id').put(updateUser);
-router.route('/login').post(login);
-router.route('logout').post(logout);
+router.route('/:id').put(updateUser);
+// router.route('/login').post(login);
+// router.route('/logout').post(logout);
 
 
 module.exports = router;
