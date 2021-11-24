@@ -15,9 +15,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Use only if the main html isn't loading in production
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
 app.use(routes);
 
