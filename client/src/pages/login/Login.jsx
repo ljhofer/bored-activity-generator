@@ -1,14 +1,11 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-import './login.css'
+import './Login.css'
 
 export default function Login () {
   return (
     <>
     <Navbar/>
-    {/* <div  >
-    <img className="loginBackground" src="./assets/images/hero10.jpg"/>
-    </div> */}
   
       <div className="formPageContainer">
         <div className="formPageCard">

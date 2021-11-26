@@ -28,6 +28,19 @@ module.exports = {
     //     throw err
     //   }
     // },
+    // async getTopActivities (req, res) {
+ 
+    //     Activity.aggregate([{ $addFields: { aveRating: { $sum: '$exercises.duration' }, }, },
+    //   ])
+    //     .sort({ aveRating: -1})
+    //     .limit(6)
+    //     .then(data => {
+    //     res.json(data);
+    //     })
+    //     .catch(err => {
+    //     res.json(err);
+    //     });
+    // }};
     
     
     

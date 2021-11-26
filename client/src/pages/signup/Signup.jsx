@@ -1,6 +1,6 @@
 import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
-import './signup.css'
+import './Signup.css'
 
 export default function SignUp () {
   return (
