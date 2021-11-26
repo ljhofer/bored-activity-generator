@@ -4,32 +4,30 @@ module.exports = {
 
 
     // getTopActivities
+    async getTopActivities(req, res) {
+        const allActivities = await Activity.find({});
+    
+        if (!allActivities) {
+          return res.status(400).json({ message: 'No activities found' });
+        }
+    
+        res.status(200).json(allActivities);
+      },
+    
+    
+    
+    
     // async getTopActivities(req, res) {
-    //     const allActivities = await Activity.find({});
-    
-    //     if (!allActivities) {
-    //       return res.status(400).json({ message: 'No activities found' });
-    //     }
-    
-    //     res.status(200).json(allActivities);
-    //   },
-    
-    
-    
-    
-    // async getTopActivities (req, res) {
- 
-    //     Activity.aggregate([{ $addFields: { aveRating: { $sum: '$exercises.duration' }, }, },
-    //   ])
-    //     .sort({ aveRating: -1})
+    //   try {
+    //     const aveActivity = await Activity.aggregate([{ $addFields: { aveRating: { $sum: '$comments.rating' }, }, },])
+    //     console.log(aveActivity)
+    //     aveActivity.sort({ aveRating: -1})
     //     .limit(6)
-    //     .then(data => {
-    //     res.json(data);
-    //     })
-    //     .catch(err => {
-    //     res.json(err);
-    //     });
-    // }};
+    //   }
+    //   catch(err){
+    //     throw err
+    //   }
+    // },
     
     
     
