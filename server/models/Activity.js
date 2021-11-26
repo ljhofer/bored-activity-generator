@@ -7,26 +7,27 @@ const ActivitySchema = new Schema({
     type: String,
     unique: true
   },
-  ratings: [{
-    value: Number,
-    postedBy: {
+  activity: {
+    type: String
+  },
+  type: {
+    type: String
+  },
+  participants: {
+    type: Number
+  },
+  accesibility: {
+    type: Number
+  },
+  comments:[
+    {
       type: Schema.Types.ObjectId,
-      ref: 'User'
-    },
-  }]
-,
-  comments:[{
-    text: String,
-    postedOn: {
-      type: Date,
-    default: Date.now,
-    },
-    postedBy: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'Comment'
     }
-  }]
+  ]
   ,
+ 
+  
 });
 
 const Activity = mongoose.model("Activity", ActivitySchema);

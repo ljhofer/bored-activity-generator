@@ -66,6 +66,192 @@ table {
 * {
 	margin: 0;
   padding: 0;
-  font-size: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+ ;
 }
+
+html, 
+body {
+  background-color: #f5f4ed;
+  font-family: 'Quicksand', sans-serif;
+}
+
+
+/*********************************** 2.0 Scroll *************************************/
+::-webkit-scrollbar {
+  width:.5em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d1c9af;
+  
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(100, 88, 88);
+  height: .5em;
+}
+
+
+/*********************************** 3.0 Global *************************************/
+.formPageContainer{
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin-top: 5em;
+  position: absolute;
+}
+
+.formPageCard{
+  width: 40%;
+}
+
+.formContainer{
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #d1c9af;
+  -webkit-box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66); 
+box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
+
+}
+
+.formInput{
+  margin: .5em 0;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #d1c9af;
+  font-size: 18px;
+  padding-left: 20px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+}
+
+.formInput:focus{
+  outline: none;
+}
+
+.formBtn{
+  margin: 1em 0 .5em;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #d1c9af;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+}
+
+.formForgot{
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .formPageCard{
+    width: 60%;
+  }
+}
+
+/*********************************** 3.0 Profile *************************************/
+.banner{
+  width: 100%;
+  border-bottom: .1em solid black;
+  -webkit-box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66); 
+  box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
+} 
+
+.bannerImg{
+  width: 100%;
+  height: 10em;
+  object-fit: cover;
+}
+  
+.profilePictureImg{
+  height: 5em;
+  width: 5em;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 3.5em;
+  border: 2px solid rgb(202, 191, 162);
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  z-index: 3;
+}
+  
+.profileInfo{
+  display: flex;
+  top: 6.5em;
+  position: absolute;
+  right:0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: #d4e0c9;
+  width: 70%;
+  padding: 2em .5em .5em;
+  border-radius: 20px;
+  border: 1px solid rgb(223, 220, 193);
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+}
+
+.profileName{
+  font-size: 1.2em;
+  font-weight: 300;
+}
+  
+.wholeContainer{
+  display: flex;
+  overflow: scroll;
+  z-index: 100000;
+}
+
+.asideContainer {
+  width: 20em;
+}
+
+.mainContainer{
+  margin: 2em 10em 1em 15em;
+} 
+
+.sidebarContainer {
+  overflow-y: scroll;
+  padding: 1.2em;
+  width: 12em;
+  height: 100%;
+  position: fixed;
+  background-color: #d4e0c9;
+  -webkit-box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66); 
+  box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
+}
+
+
+/*********************************** 3.0 Profile *************************************/
+
+
+
+
+/*********************************** 3.0 Profile *************************************/
+
+
+
+
+/*********************************** 3.0 Profile *************************************/
+
+
+
+/*********************************** 3.0 Profile *************************************/
+
 

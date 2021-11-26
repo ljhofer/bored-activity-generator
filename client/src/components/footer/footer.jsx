@@ -2,8 +2,8 @@ import './footer.css'
 
 export default function Footer() {
   return (
-    <div>
-      hero
+    <div className="footerContainer">
+      
     </div>
   )
 }
