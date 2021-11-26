@@ -22,6 +22,19 @@ module.exports = {
     //     const aveActivity = await Activity.aggregate([{ $addFields: { aveRating: { $sum: '$comments.rating' }, }, },])
     //     console.log(aveActivity)
     //     aveActivity.sort({ aveRating: -1})
+
+    //     .limit(6)
+    //   }
+    //   catch(err){
+    //     throw err
+    //   }
+    // },
+    // async getTopActivities (req, res) {
+ 
+    //     Activity.aggregate([{ $addFields: { aveRating: { $sum: '$exercises.duration' }, }, },
+    //   ])
+    //     .sort({ aveRating: -1})
+
     //     .limit(6)
     //   }
     //   catch(err){
