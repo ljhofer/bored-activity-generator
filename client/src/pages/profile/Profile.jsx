@@ -41,7 +41,7 @@ export default function Profile () {
             <Feed username="sophia"/>
           </div>
         </div>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }
