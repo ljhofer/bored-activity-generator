@@ -1,0 +1,46 @@
+[
+  {
+    "firstName": "Laura",
+    "lastName": "Schmofer",
+    "username": "loloschmo",
+    "email": "lolo@mail.com",
+    "password": "laura",
+    "bio": "New bored dev.",
+    "followers": [],
+    "following": [],
+    "activities": []
+  },
+  {
+    "firstName": "Treshawn",
+    "lastName": "Smith",
+    "username": "devtre",
+    "email": "tsmith@mail.com",
+    "password": "treshawn",
+    "bio": "Bored off my gourd.",
+    "followers": [],
+    "following": [],
+    "activities": []
+  },
+  {
+    "firstName": "Kiara",
+    "lastName": "Vang",
+    "username": "kvang",
+    "email": "kvang@mail.com",
+    "password": "kiara",
+    "bio": "Looking for some new activities.",
+    "followers": [],
+    "following": [],
+    "activities": []
+  },
+  {
+    "firstName": "Michael",
+    "lastName": "Bowman",
+    "username": "mibowdev",
+    "email": "bowmanm@mail.com",
+    "password": "michael",
+    "bio": "Super bored.",
+    "followers": [],
+    "following": [],
+    "activities": []
+  }
+]
