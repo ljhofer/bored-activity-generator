@@ -16,7 +16,7 @@ const ActivitySchema = new Schema({
   participants: {
     type: Number
   },
-  accesibility: {
+  accessibility: {
     type: Number
   },
   comments:[

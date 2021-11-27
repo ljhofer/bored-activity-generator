@@ -11,7 +11,7 @@ const CommentSchema = new Schema({
   },
   postedOn: {
     type: Date,
-  default: Date.now,
+    default: Date.now,
   },
 });
 
