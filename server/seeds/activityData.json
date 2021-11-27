@@ -1,0 +1,60 @@
+[
+  {
+    "actId" : "2167064",
+    "activity" : "Learn GraphQL",
+    "type" : "education",
+    "participants" : 1,
+    "accessibility": 0.8, 
+    "comments": []
+  },
+  {
+    "actId" : "2055368",
+    "activity" : "Volunteer at local food bank",
+    "type" : "charity",
+    "participants" : 1,
+    "accessibility": 0.1, 
+    "comments": []
+  },
+  {
+    "actId" : "8503795",
+    "activity" : "Go to a thrift shop",
+    "type" : "recreational",
+    "participants" : 1,
+    "accessibility": 0.2, 
+    "comments": []
+  },
+  {
+    "actId" : "6197243",
+    "activity" : "Rearrange or organize a room",
+    "type" : "busywork",
+    "participants" : 1,
+    "accessibility": 0.15, 
+    "comments": []
+  },
+  {
+    "actId" : "8731710",
+    "activity" : "Learn how to beatbox",
+    "type" : "recreational",
+    "participants" : 1,
+    "accessibility": 1, 
+    "comments": []
+  },
+  {
+    "actId" : "3954882",
+    "activity" : "Organize your pantry",
+    "type" : "busywork",
+    "participants" : 1,
+    "accessibility": 0, 
+    "comments": []
+  },
+  {
+    "actId" : "1572120",
+    "activity" : "Configure two-factor authentication on your accounts",
+    "type" : "busywork",
+    "participants" : 1,
+    "accessibility": 0, 
+    "comments": []
+  }
+]
+
+

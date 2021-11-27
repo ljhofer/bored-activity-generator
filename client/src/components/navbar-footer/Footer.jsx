@@ -1,4 +1,4 @@
-import './footer.css'
+import './navbar-login.css'
 
 export default function Footer() {
   return (

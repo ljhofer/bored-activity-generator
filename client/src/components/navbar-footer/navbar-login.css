@@ -75,3 +75,13 @@
   align-items: center;
   justify-content: center;
 }
+
+.footerContainer {
+  height: 5em;
+  background-color: #d1c9af;
+  
+  width: 100%;;
+  border-top: 1px solid #000000;
+  position: relative;
+  margin-top: 10em;
+}
