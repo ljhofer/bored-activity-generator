@@ -1,47 +1,65 @@
-import { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
 
-import Navbar from "../../components/navbar/Navbar";
-import Sidebar from "../../components/sidebar/Sidebar";
-import CardNew from "../../components/card-new/CardNew";
-import Feed from "../../components/feed/Feed";
-import Footer from "../../components/footer/Footer";
-// import ProfileHeroView from "../../components/profile-hero-view/ProfileHeroView";
-// import ProfileHeroUser from "../../components/profile-hero-user/ProfileHeroUser"; 
-import './profile.css'
-import { useParams } from "react-router"
+import { getMe } from '../../utils/API';
+import Auth from '../../utils/auth';
 
+const Profile = () => {
+  const [userData, setUserData] = useState({});
 
-export default function Profile () {
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER
+  // use this to determine if `useEffect()` hook needs to run again
+  const userDataLength = Object.keys(userData).length;
 
-  const [user, setUser] =  useState<null | {user: any}>(null);
-  // const { user: userCard } = useContext(AuthContext);
-  const params = useParams();
-  console.log(params.username);
+  /* When this component loads, it will look for a token in localStorage. If 
+  it finds one, it will attempt to get the user data from that token. */
+  useEffect(() => {
+    const getUserData = async () => {
+      try {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-  // 
-  // useEffect(() =>{
-  //   const fetchUser = async () => {
-  //     const res = await fetch(`/users?userId=${ card.userId}`);
-  //     setUser(res.data)
-  //   };
-  //   fetchUser();
-  // }, [card.userId]);
+        if (!token) {
+          return false;
+        }
+
+        const response = await getMe(token);
+
+        if (!response.ok) {
+          throw new Error('something went wrong!');
+        }
+
+        const user = await response.json();
+        setUserData(user);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    getUserData();
+  }, [userDataLength]);
+
+  // if data isn't here yet, say so
+  if (!userDataLength) {
+    return <h2>LOADING...</h2>;
+  }
 
   return (
     <>
-      <Navbar/>
-      {/* { user ? <ProfileHeroUser/> : <ProfileHeroView/> } */}
-        <div className="wholeContainer">
-          <div className="asideContainer">
-            <Sidebar/>
-          </div>
-          <div className="mainContainer">
-            <CardNew/>
-            <Feed username="sophia"/>
-          </div>
-        </div>
-      <Footer/>
+      <Jumbotron fluid className='text-light bg-dark'>
+        <Container>
+          <h1>Your Profile</h1>
+        </Container>
+      </Jumbotron>
+
+      <Container>
+        <Card border='dark'>
+          <Card.Body>
+            <Card.Title>{userData.username}</Card.Title>
+            <Card.Text>Email: {userData.email}</Card.Text>
+          </Card.Body>
+        </Card>
+      </Container>
     </>
-  )
-}
+  );
+};
+
+export default Profile;
