@@ -1,62 +1,86 @@
-import Navbar from "../../components/navbar/Navbar";
-// import ModalCategory from "../../components/modal-category/ModalCategory";
-import Sidebar from "../../components/sidebar/Sidebar";
-import CardNew from "../../components/card-new/CardNew";
-import Feed from "../../components/feed/Feed";
-import Footer from "../../components/footer/Footer";
-import { Search, Person, Chat } from '@material-ui/icons';
-import Card from "../../components/card/Card";
-import './home.css';
+import React from 'react'
+import { useEffect, useRef, useState } from "react";
+import Navbar from "../../components/navbar-footer/Navbar";
+import FeedHome from "../../components/feed/FeedHome";
+import { Search, Person, Chat } from '@material-ui/icons'
+import  ModalRandom  from '../../components/modal/ModalRandom';
+import  ModalCategoryBusyWork  from '../../components/modal/ModalCategoryBusyWork';
+import  ModalCategoryDiy  from '../../components/modal/ModalCategoryDiy';
+import  ModalCategoryRecreational  from '../../components/modal/ModalCategoryRecreational';
+import  ModalCategoryEducation  from '../../components/modal/ModalCategoryEducation';
+import  ModalCategoryMusic from '../../components/modal/ModalCategoryMusic';
+import  ModalCategoryRelaxation from '../../components/modal/ModalCategoryRelaxation';
+import  ModalCategorySocial from '../../components/modal/ModalCategorySocial';
+
+
+import './home.css'
 
 export default function Home () {
-  const PublicFolder = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const ref = useRef();
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (isMenuOpen && ref.current && !ref.current.contains(e.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("click", checkIfClickedOutside);
+    return () => {
+      document.removeEventListener("click", checkIfClickedOutside);
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
-      {/* Add conditional for navbar */}
       <Navbar/>
-        {/* Hero section */}
         <div className="hero">
-          <img className="heroImg" src="/assets/images/hero.jpg" alt="Hero Image"/>
-          <div className="heroBtnPosition"><button className="heroBtn"> <a href="#m1-o" class="link-1" id="m1-c">Modal 1</a></button></div>
-          <nav>
-              <label for="touch"><span>Search by Category</span></label>               
-              <input type="checkbox" id="touch"/> 
-                <ul class="slide">
-                  <li><a href="#">1</a></li> 
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                </ul>
-            </nav> 
-          </div>
-      
-      
-          {/* Wishlish -Feature Section */}
-          {/* <div className="featureContainer">
-            <div class="site-section">
-              <div class="site-section-inside">
-                <div class="feature-box">
-                  <Search/>
-                    <h5>Find an Activity</h5>
-                    <p>Just think of how easy this is to use. Toddlers can do it. So can you!</p>
-                </div>
-                <div class="feature-box">
-                    <Person/>
-                    <h5>Share Your Activty </h5>
-                    <p>Show your Friends the awesome skills you have learned!</p>
-                </div>
-                <div class="feature-box">
-                    <Chat/>
-                    <h5>You'll Love It</h5>
-                    <p>See What Your Friends Are Up To!</p>
-                </div>
-              </div>
+          <img className="heroImg" src="/assets/images/hero.jpg" alt="Hero"/>
+          <div className="modalPosition"><ModalRandom/></div>
+          <div className="surrounding">
+          <div className="wrapper" ref={ref}>
+      <button className="button" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        Find By Category
+      </button>
+      {isMenuOpen && (
+        <ul className="list">
+          <li className="list-item"><ModalCategorySocial/></li>
+          <li className="list-item"><ModalCategoryMusic/></li>
+          <li className="list-item"><ModalCategoryEducation/></li>
+          <li className="list-item"><ModalCategoryRelaxation/></li>
+          <li className="list-item"><ModalCategoryDiy/></li>
+          <li className="list-item"><ModalCategoryRecreational/></li>
+          <li className="list-item"><ModalCategoryBusyWork/></li>
+        </ul>
+      )}
+    </div>
+    </div>
+        </div>
+        
+        <div className="featureContainer">
+          <div className="site-section">
+          <div className="site-section-inside">
+            <div className="feature-box">
+              <Search/>
+                <h5>Find an Activity</h5>
+                <p>Just think of how easy this is to use. Toddlers can do it. So can you!</p>
             </div>
-          </div> */}
-
-
-      <Footer/>
+            <div className="feature-box">
+                <Person/>
+                <h5>Share Your Activty </h5>
+                <p>Show your Friends the awesome skills you have learned!</p>
+            </div>
+            <div className="feature-box">
+                <Chat/>
+                <h5>You'll Love It</h5>
+                <p>See What Your Friends Are Up To!</p>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div>
+          <FeedHome/>
+          
+        </div>
     </>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import Navbar from "../../components/navbar/Navbar";
-import Footer from "../../components/footer/Footer";
+import Navbar from "../../components/navbar-footer/Navbar";
+import Footer from "../../components/navbar-footer/Footer";
 import './setting.css'
 
 export default function Setting () {
