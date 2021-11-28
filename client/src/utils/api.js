@@ -90,3 +90,12 @@ export const deleteComment = () => {
     },
   });
 };
+
+export const getTopActivities = () => {
+  return fetch('/api/activity', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
