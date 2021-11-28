@@ -29,3 +29,12 @@ export const loginUser = (userData) => {
     body: JSON.stringify(userData),
   });
 };
+
+export const getTopActivities = () => {
+  return fetch('/api/activity', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};

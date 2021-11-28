@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { TextField } from '@material-ui/core';
-// import Comments from '../comment/Comment';
+import Comments from '../comment/Comment';
 import SendIcon from '@material-ui/icons/Send';
 import "./card.css";
+import { Link } from 'react-router-dom';
+import { getTopActivities } from '../../utils/api'
+
 
 
 
@@ -24,19 +27,44 @@ function Card() {
     setHoverValue(undefined)
   }
 
+
+
+
+
+  const [activityList, setActivityList] = useState([]);
+
+  const getActivity = async () => {
+    try {
+      const res = await getTopActivities();
+      if (!res.ok) {
+        throw new Error('No Activities');
+      }
+      const activityList = await res.json();
+      setActivityList(activityList)
+    } catch(err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getActivity();
+  }, []);
+
+
+
   return (
     <div className="card">
       <div className="post__header">
-        <ul className="cardList">
-          <li className="cardItem">
-            Activity
-          </li>
-          <li className="cardItem">
-            Activity
-          </li>
-          <li className="cardItem">
-            Activity
-          </li>
+      <ul className="cardList">
+          {activityList.map((acts) => {
+            return (
+              <li className="cardItem" key={acts._id}>
+                <Link to={{ pathname: `/activity/${acts._id}` }}>{acts.activity}</Link><br/>
+                { acts.participation }<br/>
+                { acts.type }
+              </li>
+            );
+          })}
         </ul>
         <form className="post__form"><TextField label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
           <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />}>Send</button>
