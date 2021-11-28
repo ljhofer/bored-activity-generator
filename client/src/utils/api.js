@@ -8,16 +8,16 @@ export const getUsers = () => {
   });
 };
 
-export const createUser = () => {
-  return fetch("/api/user", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
+// export const createUser = () => {
+//   return fetch("/api/user", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+// };
 
-export const getUserById = () => {
+export const getUserById = (userId) => {
   return fetch(`api/user/${userId}`, {
     method: "GET",
     headers: {
@@ -26,7 +26,7 @@ export const getUserById = () => {
   });
 };
 
-export const updateUser = () => {
+export const updateUser = (userId) => {
   return fetch(`api/user/${userId}`, {
     method: "PUT",
     headers: {
@@ -54,7 +54,7 @@ export const createActivity = () => {
   });
 };
 
-export const getActivityById = () => {
+export const getActivityById = (activityId) => {
   return fetch(`/api/activity/${activityId}`, {
     method: "GET",
     headers: {
@@ -73,7 +73,7 @@ export const addComment = () => {
   });
 };
 
-export const updateComments = () => {
+export const updateComments = (commentId) => {
   return fetch(`/api/comment/${commentId}`, {
     method: "PUT",
     headers: {
@@ -82,7 +82,7 @@ export const updateComments = () => {
   });
 };
 
-export const deleteComment = () => {
+export const deleteComment = (commentId) => {
   return fetch(`/api/comment/${commentId}`, {
     method: "DELETE",
     headers: {
@@ -91,11 +91,40 @@ export const deleteComment = () => {
   });
 };
 
-export const getTopActivities = () => {
-  return fetch('/api/activity', {
-    method: 'GET',
+// export const getTopActivities = () => {
+//   return fetch('/api/activity', {
+//     method: 'GET',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//   });
+// };
+
+export const getMe = (token) => {
+  return fetch('/api/users/me', {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const createUser = (userData) => {
+  return fetch('/api/users', {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify(userData),
+  });
+};
+
+export const loginUser = (userData) => {
+  return fetch('/api/users/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
   });
 };
