@@ -11,7 +11,7 @@ db.once('open', async () => {
   const activities = await Activity.insertMany(activityData);
 
   console.log('Activities seeded!');
-  // process.exit(0);
+
 });
 
 db.once('open', async () => {
@@ -20,7 +20,7 @@ db.once('open', async () => {
   const users = await User.insertMany(userData);
 
   console.log('Users seeded!');
-  // process.exit(0);
+
 });
 
 db.once('open', async () => {
