@@ -7,9 +7,9 @@
     "email": "lolo@mail.com",
     "password": "laura",
     "bio": "New bored dev.",
-    "followers": [],
-    "following": [],
-    "activities": []
+    "followers": [{"_id": "61a388b36fef9431485a852c"}],
+    "following": [{"_id": "61a388b36fef9431485a852c"}],
+    "activities": [{"_id": "61a28b56bc8007203cbfacf7"}]
   },
   {
     "_id": "61a388b36fef9431485a852c",
@@ -19,9 +19,9 @@
     "email": "tsmith@mail.com",
     "password": "treshawn",
     "bio": "Bored off my gourd.",
-    "followers": [],
-    "following": [],
-    "activities": []
+    "followers": [{"_id": "61a388b36fef9431485a852b"}],
+    "following": [{"_id": "61a388b36fef9431485a852b"}],
+    "activities": [{"_id": "61a28b56bc8007203cbfacf7"}]
   },
   {
     "_id": "61a388b36fef9431485a852d",
@@ -33,7 +33,7 @@
     "bio": "Looking for some new activities.",
     "followers": [],
     "following": [],
-    "activities": []
+    "activities": [{"_id": "61a28b56bc8007203cbfacf8"}]
   },
   {
     "_id": "61a388b36fef9431485a852e",
@@ -45,6 +45,6 @@
     "bio": "Super bored.",
     "followers": [],
     "following": [],
-    "activities": []
+    "activities": [{"_id": "61a28b56bc8007203cbfacf8"}]
   }
 ]

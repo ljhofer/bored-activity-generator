@@ -2,21 +2,25 @@
   {
     "_id": "61a388b36fef9431485a8530",
     "text": "Pretty fun",
-    "rating": 4
+    "rating": 3,
+    "postedBy": {"_id": "61a388b36fef9431485a852b"}
   },
   {
     "_id": "61a388b36fef9431485a8531",
     "text": "Meh",
-    "rating": 2
+    "rating": 2,
+    "postedBy": {"_id": "61a388b36fef9431485a852c"}
   },
   {
     "_id": "61a388b36fef9431485a8532",
     "text": "Lame",
-    "rating": 1
+    "rating": 1,
+    "postedBy": {"_id": "61a388b36fef9431485a852d"}
   },
   {
     "_id": "61a388b36fef9431485a8533",
     "text": "Most fun ever",
-    "rating": 5
+    "rating": 5,
+    "postedBy": {"_id": "61a388b36fef9431485a852e"}
   }
 ]
