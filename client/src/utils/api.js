@@ -1,31 +1,92 @@
-/* When this method is called, notice that the token is also 
-provided, and then attached via headers. Headers are a secure way 
-of passing tokens from client to server. */
-export const getMe = (token) => {
-  return fetch('/api/users/me', {
+// user routes
+export const getUsers = () => {
+  return fetch("/api/user", {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
   });
 };
 
-export const createUser = (userData) => {
-  return fetch('/api/users', {
-    method: 'POST',
+export const createUser = () => {
+  return fetch("/api/user", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(userData),
   });
 };
 
-export const loginUser = (userData) => {
-  return fetch('/api/users/login', {
-    method: 'POST',
+export const getUserById = () => {
+  return fetch(`api/user/${userId}`, {
+    method: "GET",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify(userData),
+  });
+};
+
+export const updateUser = () => {
+  return fetch(`api/user/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+// activity routes
+export const getTopActivities = () => {
+  return fetch("/api/activity", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const createActivity = () => {
+  return fetch("/api/activity", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const getActivityById = () => {
+  return fetch(`/api/activity/${activityId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+// comment routes
+export const addComment = () => {
+  return fetch("/api/comment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const updateComments = () => {
+  return fetch(`/api/comment/${commentId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const deleteComment = () => {
+  return fetch(`/api/comment/${commentId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 };
