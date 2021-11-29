@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const ActivitySchema = new Schema({
   actkey: {
     type: String,
-    unique: true
+    // unique: true
   },
   activity: {
     type: String
