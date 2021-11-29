@@ -67,8 +67,4 @@ module.exports = {
         // add to other person's followers
         // deleteFollowing
 
-
-    
-         
-
 };
