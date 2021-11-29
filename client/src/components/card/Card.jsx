@@ -10,7 +10,7 @@ import { getTopActivities } from '../../utils/api'
 
 
 
-function Card() {
+function Card(props) {
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
@@ -31,41 +31,12 @@ function Card() {
 
 
 
-  const [activityList, setActivityList] = useState([]);
-
-  const getActivity = async () => {
-    try {
-      const res = await getTopActivities();
-      if (!res.ok) {
-        throw new Error('No Activities');
-      }
-      const activityList = await res.json();
-      setActivityList(activityList)
-    } catch(err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getActivity();
-  }, []);
-
-
-
   return (
     <div className="card">
       <div className="post__header">
-      <ul className="cardList">
-          {activityList.map((acts) => {
-            return (
-              <li className="cardItem" key={acts._id}>
-                <Link to={{ pathname: `/activity/${acts._id}` }}>{acts.activity}</Link><br/>
-                { acts.participation }<br/>
-                { acts.type }
-              </li>
-            );
-          })}
-        </ul>
+        <h2>Activity:{props.activity}</h2>
+        <p>Type: {props.type}</p>
+        <p>Participants: {props.participants}</p>
         <form className="post__form"><TextField label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
           <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />}>Send</button>
         </form>

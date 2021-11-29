@@ -48,7 +48,7 @@ module.exports = {
     
     async getActivityById({ params }, res) {
         console.log(params)
-        const activity = await Activity.findOne({ _id: params.id });
+        const activity = await Activity.findOne({ actkey: params.id });
     
         if (!activity) {
           return res.status(400).json({ message: 'No activity found by that id' });
