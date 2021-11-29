@@ -77,6 +77,11 @@ body {
   min-height: 100%;
 }
 
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /*********************************** 2.0 Scroll *************************************/
 ::-webkit-scrollbar {
@@ -98,11 +103,15 @@ body {
   display: flex;
   height: 100%;
   justify-content: center;
-  margin-top: 5em;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .formPageCard{
   width: 40%;
+  padding: 1em;
+
 }
 
 .formContainer{
@@ -114,7 +123,7 @@ body {
   justify-content: space-between;
   border: 1px solid #d1c9af;
   -webkit-box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66); 
-box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
+  box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
 
 }
 
@@ -145,6 +154,7 @@ box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
   cursor: pointer;
   -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
   box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  width: 80%
 }
 
 .formForgot{
@@ -234,7 +244,76 @@ box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
 
 
 /*********************************** 3.0 Profile *************************************/
+.navbarContainer {
+  height: 3em;
+  width: 100%;
+  background-color: #d1c9af;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top:0;
+  border-bottom: 1px solid black;
+  z-index: 99999;
+}
 
+.navbarLogo {
+  flex: 1.5;
+  cursor: pointer;
+  font-size: 2em;
+  text-align: center;
+  padding: 0 .25em;
+  color: black;
+}
+
+.navbarPages {
+  flex: 2;
+}
+.navbarIcons {
+  flex:1;
+  padding: 0 .25em;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.navbarBtn{
+  display: flex;
+  flex:1;
+  padding: 0 .25em;
+  cursor: pointer;
+  
+}
+
+.navbarBtnItem{
+  
+  padding: 0 .3em;
+  cursor: pointer;
+
+}
+
+.iconBadge {
+  width: .8em;
+  height: .8em;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  position: absolute;
+  margin-left: 1.1em;
+  top: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerContainer {
+  height: 5em;
+  background-color: #d1c9af;
+  
+  width: 100%;;
+  border-top: 1px solid #000000;
+  position: relative;
+  margin-top: 10em;
+}
 
 
 

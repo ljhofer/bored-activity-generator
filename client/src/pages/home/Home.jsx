@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect, useRef, useState } from "react";
-import Navbar from "../../components/navbar-footer/Navbar";
 import FeedHome from "../../components/feed/FeedHome";
 import { Search, Person, Chat } from '@material-ui/icons'
 import  ModalRandom  from '../../components/modal/ModalRandom';
@@ -32,7 +31,6 @@ export default function Home () {
 
   return (
     <>
-      <Navbar/>
         <div className="hero">
           <img className="heroImg" src="/assets/images/hero.jpg" alt="Hero"/>
           <div className="modalPosition"><ModalRandom/></div>

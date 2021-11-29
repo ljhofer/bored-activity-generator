@@ -1,4 +1,3 @@
-import './navbar-login.css'
 
 export default function Footer() {
   return (
