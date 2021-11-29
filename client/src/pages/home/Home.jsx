@@ -55,8 +55,11 @@ export default function Home () {
                   <li className="list-item"><ModalCategoryBusyWork/></li>
                 </ul>
               )}
+             
             </div>
-         </div>
+          </div>
+         <FeedHome />
         </div>
+       
   )
 };
