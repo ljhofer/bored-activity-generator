@@ -78,6 +78,7 @@ export default function ModalRandom() {
         .then(function(data) {
             console.log(data);
             displayResults(data);
+            
         })
   }
 
@@ -87,8 +88,14 @@ export default function ModalRandom() {
     setParticipants(data.participants);
     setActKey(data.key);
     setAccessibility(data.accessibility);
+   
+    const act = {actkey: data.key, activity: data.activity, type: data.type, participants: data.participants, accessibility: data.accessibility}
+    createActivity(act);
     return
   }
+  // const createNewActivity = async (data) => {
+  //   const res = await createActivity(data);
+  // }
   const handleFormSubmit = (e) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();

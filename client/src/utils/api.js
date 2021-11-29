@@ -45,9 +45,10 @@ export const getTopActivities = () => {
   });
 };
 
-export const createActivity = () => {
+export const createActivity = (data) => {
   return fetch("/api/activity", {
     method: "POST",
+    body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
