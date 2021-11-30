@@ -4,15 +4,25 @@ module.exports = {
 
     //addComment
         //addText
-        //addRating
-    async addComment({ body }, res) {
-        const comment = await Comment.create(body);
+        //addRating'
+
+    /*
+        addComment
+        adds a new comment to the db
+        @param body  (includes  comment, actkey, userId)
+        @returns json
+    */
+    async addComment(req, res) {
+        console.log(req.body)
+        const commentObj = { text: req.body.comment, postedBy: req.body.userId }
+        const newComment = await Comment.create(commentObj);
     
-        if (!comment) {
-        return res.status(400).json({ message: 'Unable to create Comment' });
+        if (!newComment) {
+            return res.status(400).json({ message: 'Unable to create Comment' });
         }
-    
-        res.status(200).json(comment);
+        
+        console.log(newComment)
+        res.status(200).json(newComment);
     },
         
  
