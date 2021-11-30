@@ -1,30 +1,33 @@
 import { useEffect, useState, useContext } from 'react';
-import CardUser from "../card/CardUser";
-import { AuthContext } from '../../context/AuthContext';
+import Card from "../card/Card";
 import "./feed-profile.css";
 
-export default function FeedProfile({username}) {
-  const [cardUser, setCardUser] = useState([]);
-  const { user } = useContext(AuthContext)
+export default function FeedProfile(props) {
+  const [ activities, setActivities ] = useState([])
 
-  useEffect(() =>{
-    const fetchCardUser = async () => {
-      const res = await fetch(`/user/profile/${username}`) 
-      // : await fetch(`/user/feed/${user._id}`);
-      setCardUser(
-        res.data.sort((a, b) => {
-          return new Date(a.createdAt) - new Date(b.createdAt)
-        })
-      )
-    };
-    fetchCardUser();
-  }, [username]);
+  // make an api call to get activities for this user
+  const getActivities = async () => {
+    const resp = await fetch("/api/activities?id=" + props.user._id)
+    const data = resp.json()
+    console.log(data)
+    //setActivities(data)
+  }
+
+  useEffect( () => {
+    console.log(props.user)
+    getActivities()
+  }, [])
+  
+ 
 
   return (
     <div className="feedContainer">
-    {(!username || username === user.username) && <CardNew />}
+      {activities.map( act => (
+        <div className="card" key={act._id}>
 
-      {cardUser.map((c) => (<CardUser key={c._id} cardUser={c} />))}
+
+        </div>
+      ))}
     </div>
   );
 }

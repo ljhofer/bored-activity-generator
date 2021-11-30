@@ -37,6 +37,11 @@ function Card(props) {
         <h2>Activity:{props.activity}</h2>
         <p>Type: {props.type}</p>
         <p>Participants: {props.participants}</p>
+        <div className="getComment">
+        {commentList.map((comment) => 
+          <Card key={comment._id} text={comment.text}/>
+        )}
+        </div>
         <form className="post__form"><TextField label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
           <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />}>Send</button>
         </form>

@@ -1,66 +1,51 @@
 import React, { useState, useEffect } from 'react';
+import FeedProfile from "../../components/feed/FeedProfile";
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
+import { useAuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
-import { getMe } from '../../utils/api';
-import Auth from '../../utils/auth';
 
-const Profile = () => {
-  const [userData, setUserData] = useState({});
+export default function Profile () {
+  const authMgr = useAuthContext()
 
-  // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
-
-  /* When this component loads, it will look for a token in localStorage. If 
-  it finds one, it will attempt to get the user data from that token. */
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-        if (!token) {
-          return false;
-        }
-
-        const response = await getMe(token);
-
-        if (!response.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        const user = await response.json();
-        setUserData(user);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getUserData();
-  }, [userDataLength]);
-
-  // if data isn't here yet, say so
-  if (!userDataLength) {
-    return <h2>LOADING...</h2>;
-  }
+  useEffect( () => {
+    console.log(authMgr.authState)
+  }, [])
 
   return (
     <>
-      
-      <Jumbotron fluid className='text-light bg-dark'>
-        <Container>
-          <h1>Your Profile</h1>
-        </Container>
-      </Jumbotron>
-
-      <Container>
-        <Card border='dark'>
-          <Card.Body>
-            <Card.Title>{userData.username}</Card.Title>
-            <Card.Text>Email: {userData.email}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Container>
+      { (authMgr.authState !== null)? (
+        <>
+          <div className="banner">
+            <img className="bannerImg" src={"../../../public/images/default-profile"} alt="Banner"/>
+          </div>
+          <div className="profilePicture">
+            <img className="profilePictureImg" src={"../../../public/images/default-profile"} alt="Profile"/>
+          </div>
+          <div className="profileInfo">
+            <div className="profileName">
+              {authMgr.authState.user.username}
+            </div>
+          </div>
+          <div className="profileFeed">
+            <FeedProfile user={authMgr.authState.user} />
+          </div>
+        </>   
+      )
+      :
+      (
+        <div className="profileRedirct">
+          Please 
+          <Link to ={"/Signup"}>
+            Sign Up
+          </Link>
+            or 
+          <Link to ={"/Login"}>
+            Log In
+          </Link>
+            To Access Your Profile.
+        </div>
+      ) }
     </>
   );
-};
-
-export default Profile;
+}
