@@ -44,6 +44,7 @@ const Profile = () => {
 
   return (
     <>
+      
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
           <h1>Your Profile</h1>

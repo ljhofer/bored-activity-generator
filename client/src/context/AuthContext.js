@@ -1,32 +1,33 @@
-import { createContext, useEffect, useReducer } from "react";
-import AuthReducer from "./AuthReducer";
+import { createContext, useContext, useState, useEffect } from "react"
+import Auth from "../utils/auth"
 
-const INITIAL_STATE = {
-  user:JSON.parse(localStorage.getItem("user")) || null,
-  isFetching: false,
-  error: false,
-};
+const AuthContext = createContext()
+export const useAuthContext = () => useContext(AuthContext)
 
+const AuthProvider = ({children}) => {
+  const [ authState, setAuthState ] = useState({})
+  const providerVals = { ...authState, setAuthState }
 
-export const AuthContext = createContext(INITIAL_STATE);
+  const checkForAuthUser = async () => {
+    let loggedInUser = null;
+    try {
+      loggedInUser = Auth.getProfile()
+    } catch( e ){
+      console.log(e)
+    }
+    setAuthState(loggedInUser)
+  }
 
-export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
-  
-  useEffect(()=>{
-    localStorage.setItem("user", JSON.stringify(state.user))
-  },[state.user])
-  
+  useEffect( () => {
+    checkForAuthUser()
+  }, [])
+
   return (
-    <AuthContext.Provider
-      value={{
-        user: state.user,
-        isFetching: state.isFetching,
-        error: state.error,
-        dispatch,
-      }}
-    >
+    <AuthContext.Provider value={{ authState, setAuthState }}>
       {children}
     </AuthContext.Provider>
-  );
-};
+  )
+}
+
+const AuthConsumer = AuthContext.Consumer
+export { AuthContext, AuthProvider, AuthConsumer }

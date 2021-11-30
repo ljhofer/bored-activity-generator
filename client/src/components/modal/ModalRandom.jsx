@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./modal-category.css";
 import { FaStar } from "react-icons/fa";
 import { TextField } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import { createActivity, getActivityById, addComment }  from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useAuthContext } from "../../context/AuthContext";
 
 const colors = {
   orange: "#FFBA5A",
@@ -39,19 +40,16 @@ const styles = {
 };
 
 export default function ModalRandom() {
-  
+  const authMgr = useAuthContext()
+
   const defActivity = { activity: "", type: "", participants: 0, actkey: "" }
 
   const [modal, setModal] = useState(false);
-  const [activity, setActivity] = useState('');
-  const [type, setType] = useState('');
-  const [participants, setParticipants] = useState('');
-  const [actkey, setActKey ]= useState('');
-  const [accessibility, setAccessibility] = useState('');
   const [comment, setComment] = useState('');
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const [activityToEdit, setActivityToEdit] = useState(defActivity);
+
   const navigate = useNavigate();
   const stars = Array(5).fill(0)
 
@@ -83,14 +81,17 @@ export default function ModalRandom() {
   }
 
   const displayResults = async (data) => {
+    /*
     setActivity(data.activity);
     setType(data.type);
     setParticipants(data.participants);
     setActKey(data.key);
     setAccessibility(data.accessibility);
+    */
+    setActivityToEdit({...data, actkey: data.key})
    
-    const act = {actkey: data.key, activity: data.activity, type: data.type, participants: data.participants, accessibility: data.accessibility}
-    createActivity(act);
+    // const act = {actkey: data.key, activity: data.activity, type: data.type, participants: data.participants, accessibility: data.accessibility}
+    createActivity(activityToEdit);
     return
   }
  
@@ -112,17 +113,20 @@ export default function ModalRandom() {
   }
 
 
-  const handleInputChange = (event) => {
-    const { comment , value } = event.target;
-    // setComment(comment.text);
-    setActivityToEdit({ ...activityToEdit, [comment]: value });
-    console.log(activityToEdit);
+  const handleInputChange = (e) => {
+    setComment(e.target.value)
   };
 
   const saveComment = async (e) => {
     e.preventDefault();
+
+    //get the user id who made the comment
+    const userId = authMgr.authState.data._id 
+    console.log(userId + " made this comment")
+    console.log(activityToEdit)
+
     const comm = { comment: comment };
-    addComment(comm);
+    addComment(comm, activityToEdit.actkey, userId);
   
   }
   
@@ -137,17 +141,20 @@ export default function ModalRandom() {
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
-            <h2>Activity: {activity}</h2>
+            <h2>Activity: {activityToEdit.activity}:</h2>
             <p>
-              Type: {type}
+              Type: {activityToEdit.type}
             </p>
             <p>
-              Participants {participants}
+              Participants {activityToEdit.participants}
             </p>
 
-            <form className="post__form"><TextField onChange={handleInputChange} name="text" value={setComment.name} label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
-              <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />} onClick={saveComment}>Add Comment</button>
-            </form>
+            { authMgr.authState !== null && (
+              <form className="post__form"><TextField onChange={handleInputChange} name="text" value={comment} label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
+                <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />} onClick={saveComment}>Add Comment</button>
+              </form>
+            )}
+
             <div style={styles.stars}>
               {stars.map((_, index) => {
                 return (

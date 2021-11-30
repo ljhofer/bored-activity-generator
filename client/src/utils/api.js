@@ -65,13 +65,24 @@ export const getActivityById = (activityId) => {
 };
 
 // comment routes
-export const addComment = () => {
-  return fetch("/api/comment", {
+export const addComment = async (comment, actkey, userId) => {
+  console.log(comment)
+  const dataToSubmit = {
+    ...comment, actkey, userId
+  }
+
+  const addedComment = await fetch("/api/comment", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
+    body: JSON.stringify(dataToSubmit)
   });
+
+  const data = await addedComment.json();
+  console.log(data)
+  console.log("New comment id: " + data._id)
+
 };
 
 export const updateComments = (commentId) => {
