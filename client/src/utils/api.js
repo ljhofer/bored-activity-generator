@@ -8,15 +8,6 @@ export const getUsers = () => {
   });
 };
 
-// export const createUser = () => {
-//   return fetch("/api/user", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-// };
-
 export const getUserById = (userId) => {
   return fetch(`api/user/${userId}`, {
     method: "GET",
@@ -45,14 +36,15 @@ export const getTopActivities = () => {
   });
 };
 
-export const createActivity = (data) => {
-  return fetch("/api/activity", {
+export const createActivity = async (data) => {
+  const result = await fetch("/api/activity", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
     },
   });
+  
 };
 
 export const getActivityById = (activityId) => {
@@ -64,9 +56,21 @@ export const getActivityById = (activityId) => {
   });
 };
 
+export const updateActivity = (actkey, commentId) => {
+  const dataToSubmit = {
+    actkey, commentId
+  }
+  return fetch(`/api/activity/${actkey}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dataToSubmit)
+  });
+};
+
 // comment routes
 export const addComment = async (comment, actkey, userId) => {
-  console.log(comment)
   const dataToSubmit = {
     ...comment, actkey, userId
   }
@@ -80,8 +84,11 @@ export const addComment = async (comment, actkey, userId) => {
   });
 
   const data = await addedComment.json();
-  console.log(data)
-  console.log("New comment id: " + data._id)
+
+  const updatedActivity = await updateActivity(actkey, data._id);
+  console.log(updatedActivity);
+
+  
 
 };
 
@@ -103,43 +110,6 @@ export const deleteComment = (commentId) => {
   });
 };
 
-// export const getTopActivities = () => {
-//   return fetch('/api/activity', {
-//     method: 'GET',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   });
-// };
-
-// export const getMe = (token) => {
-//   return fetch('/api/users/me', {
-//     headers: {
-//       'Content-Type': 'application/json',
-//       authorization: `Bearer ${token}`,
-//     },
-//   });
-// };
-
-// export const createUser = (userData) => {
-//   return fetch('/api/users', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(userData),
-//   });
-// };
-
-// export const loginUser = (userData) => {
-//   return fetch('/api/users/login', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(userData),
-//   });
-// };
 
 export const getMe = async () => {
   const result = await fetch (`/api/user/me`, {
