@@ -24,11 +24,13 @@ const ActivitySchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Comment'
     }
-  ]
-  ,
- 
-  
-});
+  ],
+}, 
+{ 
+  timestamps: true
+}
+
+);
 
 const Activity = mongoose.model("Activity", ActivitySchema);
 

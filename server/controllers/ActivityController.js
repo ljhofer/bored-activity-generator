@@ -5,15 +5,14 @@ module.exports = {
 
     // getTopActivities
     async getTopActivities(req, res) {
-        const allActivities = await Activity.find({});
-    
-        if (!allActivities) {
-          return res.status(400).json({ message: 'No activities found' });
-        }
-    
-        res.status(200).json(allActivities);
-      },
-    
+      const allActivities = await Activity.find({});
+  
+      if (!allActivities) {
+        return res.status(400).json({ message: 'No activities found' });
+      }
+  
+      res.status(200).json(allActivities);
+    },
     
     
     
