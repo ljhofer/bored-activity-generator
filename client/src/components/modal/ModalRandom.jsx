@@ -49,11 +49,10 @@ export default function ModalRandom() {
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const [activityToEdit, setActivityToEdit] = useState(defActivity);
+  const [ activityAdded, setActivityAdded ] = useState(false)
 
   const navigate = useNavigate();
   const stars = Array(5).fill(0)
-
-  
 
   const handleClick = value => {
     setCurrentValue(value)
@@ -81,18 +80,28 @@ export default function ModalRandom() {
   }
 
   const displayResults = async (data) => {
-    /*
-    setActivity(data.activity);
-    setType(data.type);
-    setParticipants(data.participants);
-    setActKey(data.key);
-    setAccessibility(data.accessibility);
-    */
     const newActivity = {...data, actkey: data.key}
     setActivityToEdit(newActivity)
-    // const act = {actkey: data.key, activity: data.activity, type: data.type, participants: data.participants, accessibility: data.accessibility}
     createActivity(newActivity);
     return
+  }
+
+  const addActivity = async() => {
+    const resp = await fetch(
+      "/api/user/addactivity",
+      { 
+        method: "POST",
+        body: JSON.stringify({
+          userId: authMgr.authState.user._id,
+          actId: activityToEdit._id
+        }),
+        headers: {
+
+        }
+      }
+    )
+    const result= resp.json();
+    setActivityAdded(true);
   }
  
 
@@ -117,15 +126,11 @@ export default function ModalRandom() {
     setComment(e.target.value)
   };
 
-  const saveComment = async (e) => {
+  const addComment = async (e) => {
     e.preventDefault();
-
-    //get the user id who made the comment
     const userId = authMgr.authState.data._id 
-    
     const comm = { comment: comment };
     addComment(comm, activityToEdit.actkey, userId);
-
   }
   
 
@@ -148,10 +153,28 @@ export default function ModalRandom() {
             </p>
 
             { authMgr.authState !== null && (
-              <form className="post__form"><TextField onChange={handleInputChange} name="text" value={comment} label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
-                <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />} onClick={saveComment}>Add Comment</button>
+              <form className="post__form">
+                <button className="btn" onClick={addActivity}>Add Activity</button>
+                { activityAdded === true && (
+                  <>
+                    <TextField 
+                      onChange={handleInputChange} 
+                      name="text" value={comment} 
+                      label="add comment" 
+                      size="small" 
+                      variant="outlined" 
+                      className="post__input" 
+                      placeholder="add comment"
+                    />
+                    <button className="btn" onClick={addComment}>Add Comment</button>
+                  </>
+                )}
               </form>
             )}
+
+            {/* <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />} onClick={saveComment}>Add Comment</button> */}
+  
+
 
             <div style={styles.stars}>
               {stars.map((_, index) => {
