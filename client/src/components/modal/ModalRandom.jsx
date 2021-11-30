@@ -88,10 +88,10 @@ export default function ModalRandom() {
     setActKey(data.key);
     setAccessibility(data.accessibility);
     */
-    setActivityToEdit({...data, actkey: data.key})
-   
+    const newActivity = {...data, actkey: data.key}
+    setActivityToEdit(newActivity)
     // const act = {actkey: data.key, activity: data.activity, type: data.type, participants: data.participants, accessibility: data.accessibility}
-    createActivity(activityToEdit);
+    createActivity(newActivity);
     return
   }
  
@@ -122,12 +122,10 @@ export default function ModalRandom() {
 
     //get the user id who made the comment
     const userId = authMgr.authState.data._id 
-    console.log(userId + " made this comment")
-    console.log(activityToEdit)
-
+    
     const comm = { comment: comment };
     addComment(comm, activityToEdit.actkey, userId);
-  
+
   }
   
 

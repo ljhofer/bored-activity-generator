@@ -13,7 +13,6 @@ module.exports = {
         @returns json
     */
     async addComment(req, res) {
-        console.log(req.body)
         const commentObj = { text: req.body.comment, postedBy: req.body.userId }
         const newComment = await Comment.create(commentObj);
     
@@ -21,7 +20,6 @@ module.exports = {
             return res.status(400).json({ message: 'Unable to create Comment' });
         }
         
-        console.log(newComment)
         res.status(200).json(newComment);
     },
         
