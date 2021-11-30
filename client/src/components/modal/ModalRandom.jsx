@@ -3,7 +3,7 @@ import "./modal-category.css";
 import { FaStar } from "react-icons/fa";
 import { TextField } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
-import { createActivity, getActivityById }  from '../../utils/api';
+import { createActivity, getActivityById, addComment }  from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const colors = {
@@ -93,9 +93,8 @@ export default function ModalRandom() {
     createActivity(act);
     return
   }
-  // const createNewActivity = async (data) => {
-  //   const res = await createActivity(data);
-  // }
+ 
+
   const handleFormSubmit = (e) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
@@ -120,65 +119,11 @@ export default function ModalRandom() {
     console.log(activityToEdit);
   };
 
-  const saveActivity = async (e) => {
+  const saveComment = async (e) => {
     e.preventDefault();
-    
-    try {
-      const res = await getActivityById(actkey);
-
-      if (!res.length) {
-        const res = await createActivity(activityToEdit);
-
-        if (!res.ok) {
-          throw new Error('something went wrong!');
-        }
-
-        const act = await res.json();
-        console.log(act);
-
-        navigate(`/activity/${act.actkey}`);
-      }
-
-    } catch (err) {
-      console.error(err);
-    }
-
-
-
-
-
-    // if( !activityToEdit ){
-    //   try {
-    //     const res = await createActivity(activityToEdit);
-
-    //     if (!res.ok) {
-    //       throw new Error('something went wrong!');
-    //     }
-
-    //     const act = await res.json();
-    //     console.log(act);
-
-    //     navigate(`/activity/${act.actkey}`);
-    //   } catch (err) {
-    //     console.error(err);
-    //   }
-    // } else {
-    //   console.log('else');
-      // try {
-      //   const res = await updateProduct(productToEdit);
-
-      //   if (!res.ok) {
-      //     throw new Error('something went wrong!');
-      //   }
-
-      //   const prod = await res.json();
-      //   console.log(prod)
-      //   setProductToEdit(prod)
-      // } catch (err) {
-      //   console.error(err);
-      // }
-    // }
-
+    const comm = { comment: comment };
+    addComment(comm);
+  
   }
   
 
@@ -200,8 +145,8 @@ export default function ModalRandom() {
               Participants {participants}
             </p>
 
-            <form className="post__form"><TextField onChange={handleInputChange} value={activityToEdit.comment} label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
-              <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />} onClick={saveActivity}>Add Comment</button>
+            <form className="post__form"><TextField onChange={handleInputChange} name="text" value={setComment.name} label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
+              <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />} onClick={saveComment}>Add Comment</button>
             </form>
             <div style={styles.stars}>
               {stars.map((_, index) => {

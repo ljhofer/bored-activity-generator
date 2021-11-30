@@ -100,7 +100,6 @@ module.exports = {
 //     console.log(params)
 //     const user = await User.findOne({ _id: params.id });
 
-<<<<<<< HEAD
 //     if (!user) {
 //       return res.status(400).json({ message: 'No user found by that id' });
 //     }
@@ -143,6 +142,3 @@ module.exports = {
 
 };
 
-=======
-};
->>>>>>> main

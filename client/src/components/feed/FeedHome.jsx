@@ -21,7 +21,7 @@ export default function FeedHome( ) {
   useEffect(() => {
     getActivity();
   }, []);
-
+  
   return (
     <>
       <div className="homeFeed">
