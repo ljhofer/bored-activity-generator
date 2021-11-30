@@ -47,8 +47,7 @@ module.exports = {
     // getActivityById
     
     async getActivityById({ params }, res) {
-        console.log(params)
-        const activity = await Activity.findOne({ actkey: params.id });
+        const activity = await Activity.findOne({ _id: params.id }).populate('comments');
     
         if (!activity) {
           return res.status(400).json({ message: 'No activity found by that id' });
@@ -68,5 +67,25 @@ module.exports = {
     
         res.status(200).json(activity);
     },
+
+    // update activity 
+    async updateActivity({ params, body }, res) {
+      console.log("params", params)
+      console.log("body", body)
+      const activity = await Activity.findOneAndUpdate(
+        { actkey: body.actkey },
+        {$push: {comments: body.commentId}},
+
+      );
+      console.log("controller", activity);
+
+
+      if (!activity) {
+        return res.status(400).json({ message: 'Unable to update Activity' });
+      }
+  
+      res.status(200).json(activity);
+    },
+
     
 };
