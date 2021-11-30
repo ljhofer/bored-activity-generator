@@ -6,6 +6,8 @@ module.exports = {
     // getTopActivities
     async getTopActivities(req, res) {
       const allActivities = await Activity.find({});
+      allActivities.splice(6)
+      console.log(allActivities.length);
   
       if (!allActivities) {
         return res.status(400).json({ message: 'No activities found' });
@@ -19,8 +21,7 @@ module.exports = {
     // async getTopActivities(req, res) {
     //   try {
     //     const aveActivity = await Activity.aggregate([{ $addFields: { aveRating: { $sum: '$comments.rating' }, }, },])
-    //     console.log(aveActivity)
-    //     aveActivity.sort({ aveRating: -1})
+    // 
 
     //     .limit(6)
     //   }

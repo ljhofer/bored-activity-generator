@@ -12,22 +12,24 @@ export default function FeedHome( ) {
         throw new Error('No Activities');
       }
       const activityList = await res.json();
+      console.log(activityList);
       setActivityList(activityList)
     } catch(err) {
       console.error(err);
     }
   };
-
+  
   useEffect(() => {
     getActivity();
+
   }, []);
   
   return (
     <>
       <div className="homeFeed">
+
         {activityList.map((activity) => 
           <Card key={activity._id} activity={activity.activity} type={activity.type} participants={activity.participants}/>
-        
         )}
       </div>
     </>
