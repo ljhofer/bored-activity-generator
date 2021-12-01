@@ -134,8 +134,7 @@ export default function ModalRandom() {
     setComment(e.target.value)
   };
 
-  const addComment = async (e) => {
-    e.preventDefault();
+  const addComment = async () => {
     const userId = authMgr.authState.data._id 
     const comm = { comment: comment };
     addComment(comm, activityToEdit.actkey, userId);
