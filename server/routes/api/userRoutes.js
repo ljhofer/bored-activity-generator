@@ -16,7 +16,7 @@ router.route('/').get(getUsers);
 router.route('/').post(createUser);
 router.route('/me').get(authMiddleware, getSingleUser);
 router.route('/login').post(login);
-router.route('/addactivity').put(userAddActivity)
+router.route('/addactivity/:id').put(userAddActivity)
 
 
 module.exports = router;
