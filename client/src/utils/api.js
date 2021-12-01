@@ -44,7 +44,9 @@ export const createActivity = async (data) => {
       "Content-Type": "application/json",
     },
   });
-  
+  const updatedData = await result.json();
+  return updatedData._id;
+
 };
 
 export const getActivityById = (activityId) => {
