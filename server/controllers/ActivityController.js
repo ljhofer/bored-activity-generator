@@ -1,4 +1,4 @@
-const { Activity } = require('../models');
+const { Activity, Comment, User } = require('../models');
 
 module.exports = {
 
