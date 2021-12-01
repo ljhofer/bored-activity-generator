@@ -28,7 +28,7 @@ This application helps you figure out something to do when you are bored and can
 
 ## <a href="#readme-badge"><img id="usage" src="https://github.com/teamjuli0/readme-badges/blob/main/themes/clean-light/menu-categories/usage.png?raw=true" style="height: 40px"></a>
 
-1. Navigate to the Heroku hosted <!-- [Bored?](https://cleadi-book-search-engine.herokuapp.com/) application. -->
+1. Navigate to the Heroku hosted [Bored?](https://bored-activity-bootcamp.herokuapp.com/) application.
 2. Search for an activity by clicking the random button on the home page.
 3. To make a comment or rate an activity you must sign in first.
 
