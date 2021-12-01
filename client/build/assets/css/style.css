@@ -1,0 +1,332 @@
+/********************************************************************************
+CSS TABLE OF CONTENTS
+===== Base ====
+    |-- 1.0 - Reset
+    |-- 2.0 - Gobal
+    |-- 3.0 - Navbar
+    |-- 4.0 - About
+    |-- 5.0 - Project
+    |-- 6.0 - Footer
+    |-- 7.0 - Responsive
+**********************************************************************************
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+
+/*********************************** 1.0 Reset *************************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*********************************** 2.0 Global *************************************/
+* {
+	margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+ ;
+}
+
+html, 
+body {
+  background-color: #f5f4ed;
+  font-family: 'Quicksand', sans-serif;
+  min-height: 100%;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*********************************** 2.0 Scroll *************************************/
+::-webkit-scrollbar {
+  width:.5em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d1c9af;
+  
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(100, 88, 88);
+  height: .5em;
+}
+
+
+/*********************************** 3.0 Global *************************************/
+.formPageContainer{
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.formPageCard{
+  width: 40%;
+  padding: 1em;
+
+}
+
+.formContainer{
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #d1c9af;
+  -webkit-box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66); 
+  box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
+
+}
+
+.formInput{
+  margin: .5em 0;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #d1c9af;
+  font-size: 18px;
+  padding-left: 20px;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+}
+
+.formInput:focus{
+  outline: none;
+}
+
+.formBtn{
+  margin: 1em 0 .5em;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #d1c9af;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  width: 80%
+}
+
+.formForgot{
+  text-align: center;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .formPageCard{
+    width: 60%;
+  }
+}
+
+/*********************************** 3.0 Profile *************************************/
+.banner{
+  width: 100%;
+  border-bottom: .1em solid black;
+  -webkit-box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66); 
+  box-shadow: 2px 3px 15px 2px rgba(0,0,0,0.66);
+} 
+
+.bannerImg{
+  width: 100%;
+  height: 10em;
+  object-fit: cover;
+}
+  
+.profilePictureImg{
+  height: 5em;
+  width: 5em;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 3.5em;
+  border: 2px solid rgb(202, 191, 162);
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  z-index: 3;
+}
+  
+.profileInfo{
+  display: flex;
+  top: 6.5em;
+  position: absolute;
+  right:0;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  background-color: #d4e0c9;
+  width: 70%;
+  padding: 2em .5em .5em;
+  border-radius: 20px;
+  border: 1px solid rgb(223, 220, 193);
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+}
+
+.profileName{
+  font-size: 1.2em;
+  font-weight: 300;
+}
+  
+.wholeContainer{
+  display: flex;
+  overflow: scroll;
+  z-index: 100000;
+}
+
+.asideContainer {
+  width: 20em;
+}
+
+.mainContainer{
+  margin: 2em 10em 1em 15em;
+} 
+
+
+
+/*********************************** 3.0 Profile *************************************/
+
+
+
+
+/*********************************** 3.0 Profile *************************************/
+.navbarContainer {
+  height: 3em;
+  width: 100%;
+  background-color: #d1c9af;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top:0;
+  border-bottom: 1px solid black;
+  z-index: 99999;
+}
+
+.navbarLogo {
+  flex: 1.5;
+  cursor: pointer;
+  font-size: 2em;
+  text-align: center;
+  padding: 0 .25em;
+  color: black;
+}
+
+.navbarPages {
+  flex: 2;
+}
+.navbarIcons {
+  flex:1;
+  padding: 0 .25em;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.navbarBtn{
+  display: flex;
+  flex:1;
+  padding: 0 .25em;
+  cursor: pointer;
+  justify-content: space-around;
+  
+}
+
+.navbarBtnItem{
+  
+  padding: 0 .3em;
+  cursor: pointer;
+
+}
+
+.iconBadge {
+  width: .8em;
+  height: .8em;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  position: absolute;
+  margin-left: 1.1em;
+  top: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerContainer {
+  height: 5em;
+  background-color: #d1c9af;
+  
+  width: 100%;;
+  border-top: 1px solid #000000;
+  position: relative;
+  margin-top: 10em;
+}
+
+.profileFeed {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+/*********************************** 3.0 Profile *************************************/
+
+
+
+/*********************************** 3.0 Profile *************************************/
+
+
