@@ -24,11 +24,11 @@ export default function Profile () {
           </div>
           <div className="profileInfo">
             <div className="profileName">
-              {authMgr.authState.user.username}
+              {authMgr.authState.data.username}
             </div>
           </div>
           <div className="profileFeed">
-            <FeedProfile user={authMgr.authState.user} />
+            <FeedProfile user={authMgr.authState.data} />
           </div>
         </>   
       )
