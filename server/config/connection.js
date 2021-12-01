@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://hoferdevmongo:ljhofer22!@cluster0.izzqs.mongodb.net/bored?retryWrites=true&w=majority', {},
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bored', {},
 () => {
   console.log('Connected to the Database.')
 });
