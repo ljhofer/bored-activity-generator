@@ -89,8 +89,7 @@ export default function ModalRandom() {
   }
 
   const addActivity = async() => {
-    
-    
+        
     const resp = await fetch(
       `/api/user/addactivity/${authMgr.authState.data._id}`,
       { 
@@ -106,11 +105,14 @@ export default function ModalRandom() {
     )
     const result= await resp.json();
     console.log(result);
-    setActivityAdded(true);
-    return result
+    // return result
   }
  
-
+  const whenClick = (e) => {
+    e.preventDefault();
+    setActivityAdded(true);
+    addActivity();
+  }
   const handleFormSubmit = (e) => {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     e.preventDefault();
@@ -160,7 +162,10 @@ export default function ModalRandom() {
             {/* {console.log(authMgr.authState)} */}
             { authMgr.authState !== null && (
               <form className="post__form">
-                <button className="btn" onClick={addActivity}>Add Activity</button>
+                { activityAdded === false && (
+                  <button className="btn" onClick={whenClick}>Add Activity</button>
+                )}
+                
                 { activityAdded === true && (
                   <>
                     <TextField 

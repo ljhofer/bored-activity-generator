@@ -55,7 +55,32 @@ export default function Home () {
             )}
         </div>
       </div>
-      <FeedHome />
+      <div class="homeHeader">Top Activities</div>
+      <div class="homeFeedCards">
+        <FeedHome />
+      </div>
+      <div className="featureContainer">
+        <div class="homeHeader">Features</div>
+        <div class="site-section">
+          <div class="site-section-inside">
+            <div class="feature-box">
+              <Search/>
+              <h5>Find an Activity</h5>
+              <p>Just think of how easy this is to use. Toddlers can do it. So can you!</p>
+            </div>
+            <div class="feature-box">
+              <Person/>
+              <h5>Share Your Activty </h5>
+              <p>Show your Friends the awesome skills you have learned!</p>
+            </div>
+            <div class="feature-box">
+              <Chat/>
+              <h5>You'll Love It</h5>
+              <p>See What Your Friends Are Up To!</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </> 
   )
 };

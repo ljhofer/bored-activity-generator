@@ -29,7 +29,7 @@ export default function FeedHome( ) {
       <div className="homeFeed">
 
         {activityList.map((activity) => 
-          <Card key={activity._id} activity={activity.activity} type={activity.type} participants={activity.participants}/>
+          <Card key={activity._id} activity={activity.activity} type={activity.type} participants={activity.participants} comments={activity.comments}/>
         )}
       </div>
     </>

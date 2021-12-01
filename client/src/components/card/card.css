@@ -2,18 +2,18 @@
   display: flex;
   padding: .5em;
   flex-direction: row;
+  flex-wrap: wrap;
 }
+
 .card {
   display: flex;
- 
-  width: 33%;
+  width: 25%;
   background-color: white;
   margin-right: auto;
   margin-left: auto;
   border: 1px solid lightgray;
   margin: 1em;
-  padding: 1em;
-  
+  padding: 2em;
 }
 
 .post__text {
@@ -34,4 +34,3 @@ margin: 20px 0px 20px 20px
   display: flex;
   flex-direction: column;
 }
-

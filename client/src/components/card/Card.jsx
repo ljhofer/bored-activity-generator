@@ -28,24 +28,25 @@ function Card(props) {
   }
 
 
-
-
-
   return (
     <div className="card">
       <div className="post__header">
         <h2>Activity:{props.activity}</h2>
         <p>Type: {props.type}</p>
         <p>Participants: {props.participants}</p>
-        {/* <div className="getComment">
-        {commentList.map((comment) => 
-          <Card key={comment._id} text={comment.text}/>
-        )}
+        <p>Comments:</p>
+        <div className="getComment">
+          {props.comments.map((comment) => 
+            <>
+              <p key={comment._id}>{comment.text}</p>
+              <p>Posted by: {comment.postedBy.username}</p>
+            </>
+          )}
         </div>
         <form className="post__form"><TextField label="add comment" size="small" variant="outlined" className="post__input" placeholder="add comment"/>
           <button variant="contained" className="buttonStars" size="small" endIcon={<SendIcon />}>Send</button>
         </form>
-        <div style={styles.stars}>
+        {/* <div style={styles.stars}>
           {stars.map((_, index) => {
             return (
               <FaStar
