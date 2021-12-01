@@ -37,7 +37,7 @@ function Card(props) {
         <h2>Activity:{props.activity}</h2>
         <p>Type: {props.type}</p>
         <p>Participants: {props.participants}</p>
-        <div className="getComment">
+        {/* <div className="getComment">
         {commentList.map((comment) => 
           <Card key={comment._id} text={comment.text}/>
         )}
@@ -62,8 +62,8 @@ function Card(props) {
               />
             )
           })}
-        </div>  
-      </div>
+        </div> */}
+      </div>  
     </div>
   )
 }

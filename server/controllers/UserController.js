@@ -95,6 +95,14 @@ module.exports = {
     res.status(200).json(user);
   },
 
+  async userAddActivity(req,res) {
+    console.log(req)
+    const activity = await User.findOneAndUpdate(
+      {_id: req.params.id},
+      {$push: {activities: req.body.actId}}
+
+    )
+  }
 // // getUserById
 // async getUserById({ params }, res) {
 //     console.log(params)

@@ -46,6 +46,7 @@ export default function ModalRandom() {
 
   const [modal, setModal] = useState(false);
   const [comment, setComment] = useState('');
+  const [ activityId, setActivityId ] = useState('');
   const [currentValue, setCurrentValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const [activityToEdit, setActivityToEdit] = useState(defActivity);
@@ -82,26 +83,31 @@ export default function ModalRandom() {
   const displayResults = async (data) => {
     const newActivity = {...data, actkey: data.key}
     setActivityToEdit(newActivity)
-    createActivity(newActivity);
+    let actId = await createActivity(newActivity);
+    setActivityId(actId);
     return
   }
 
   const addActivity = async() => {
+    
+    
     const resp = await fetch(
-      "/api/user/addactivity",
+      `/api/user/addactivity/${authMgr.authState.data._id}`,
       { 
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({
-          userId: authMgr.authState.user._id,
-          actId: activityToEdit._id
+          // userId: authMgr.authState.data._id,
+          actId: activityId
         }),
         headers: {
-
+          "Content-Type": "application/json",
         }
       }
     )
-    const result= resp.json();
+    const result= await resp.json();
+    console.log(result);
     setActivityAdded(true);
+    return result
   }
  
 
@@ -151,7 +157,7 @@ export default function ModalRandom() {
             <p>
               Participants {activityToEdit.participants}
             </p>
-
+            {/* {console.log(authMgr.authState)} */}
             { authMgr.authState !== null && (
               <form className="post__form">
                 <button className="btn" onClick={addActivity}>Add Activity</button>

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { createUser, getSingleUser, getUsers, login, updateUser } = require('../../controllers/userController');
+const { createUser, getSingleUser, getUsers, login, updateUser, userAddActivity } = require('../../controllers/userController');
 
 // const { getUsers, createUser, getUserById, updateUser, login, logout } = require('../../controllers/UserController');
 
@@ -16,6 +16,7 @@ router.route('/').get(getUsers);
 router.route('/').post(createUser);
 router.route('/me').get(authMiddleware, getSingleUser);
 router.route('/login').post(login);
+router.route('/addactivity').put(userAddActivity)
 
 
 module.exports = router;
