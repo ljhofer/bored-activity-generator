@@ -17,10 +17,10 @@ export default function Profile () {
       { (authMgr.authState !== null)? (
         <>
           <div className="banner">
-            <img className="bannerImg" src={"../../../public/images/default-profile"} alt="Banner"/>
+            <img className="bannerImg" src="/assets/images/banner.jpg" alt="Banner"/>
           </div>
           <div className="profilePicture">
-            <img className="profilePictureImg" src={"../../../public/images/default-profile"} alt="Profile"/>
+            <img className="profilePictureImg" src="/assets/images/default-profile.jpg" alt="Profile"/>
           </div>
           <div className="profileInfo">
             <div className="profileName">

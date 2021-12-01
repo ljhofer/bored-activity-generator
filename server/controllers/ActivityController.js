@@ -5,9 +5,15 @@ module.exports = {
 
     // getTopActivities
     async getTopActivities(req, res) {
-      const allActivities = await Activity.find({});
+      // const allActivities = await Activity.find({}).populate("comments").populate("postedBy");
+      const allActivities = await Activity.find({}).populate({
+        path: "comments",
+        populate: {
+          path: "postedBy",
+          model: "User"
+        }
+      });
       allActivities.splice(6)
-      console.log(allActivities.length);
   
       if (!allActivities) {
         return res.status(400).json({ message: 'No activities found' });
