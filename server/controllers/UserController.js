@@ -101,18 +101,17 @@ module.exports = {
       {$push: {activities: req.body.actId}}
 
     )
-  }
+  },
 // // getUserById
-// async getUserById({ params }, res) {
-//     console.log(params)
-//     const user = await User.findOne({ _id: params.id });
+  async getUserById({ params }, res) {
+      const user = await User.findOne({ _id: params.id }).populate('activities');
 
-//     if (!user) {
-//       return res.status(400).json({ message: 'No user found by that id' });
-//     }
+      if (!user) {
+        return res.status(400).json({ message: 'No user found by that id' });
+      }
 
-//     res.status(200).json(user);
-// },
+      res.status(200).json(user);
+  },
 
 
 // // updateUser
